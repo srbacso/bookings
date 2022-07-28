@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/srbacso/bookings-app/internal/config"
+	"github.com/srbacso/bookings-app/internal/forms"
 	"github.com/srbacso/bookings-app/internal/models"
 	"github.com/srbacso/bookings-app/internal/render"
 	"log"
@@ -58,9 +59,16 @@ func (m *Repository) Reservation(w http.ResponseWriter, r *http.Request) {
 	render.RenderTemplate(w, r, "make-reservation.page.tmpl", &models.TemplateData{})
 }
 
+// PostReservation receives the form information for a reservation
+func (m *Repository) PostReservation(w http.ResponseWriter, r *http.Request) {
+
+}
+
 // Generals renders the room page
 func (m *Repository) Generals(w http.ResponseWriter, r *http.Request) {
-	render.RenderTemplate(w, r, "generals.page.tmpl", &models.TemplateData{})
+	render.RenderTemplate(w, r, "generals.page.tmpl", &models.TemplateData{
+		Form: forms.New(nil),
+	})
 }
 
 // Majors renders the room page
